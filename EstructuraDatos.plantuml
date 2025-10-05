@@ -1,0 +1,32 @@
+@startuml ED
+
+left to right direction
+
+    interface InterLista <E>{
+        +agregar(elemento: E): int
+        +insertar(elemento: E, indice: int) 
+        +obtener(indice: int): E
+        +eliminar(indice: int): E
+        +eliminarTodo()
+        +numElementos(): int
+        +estaVacia(): boolean
+    }
+
+
+    class Nodo <E>{
+        -sig: Nodo
+        -ant: Nodo
+        -elemento: E
+
+        +eliminarNodo(): E
+    }
+
+    class ListaEsp <E>{
+        -ultimo: Nodo
+        -cantidad: int
+
+        -obtenerNodo(indice: int): Nodo
+    }
+
+    ListaEsp ..|> InterLista : implementa
+    ListaEsp "1" -- "1" Nodo
