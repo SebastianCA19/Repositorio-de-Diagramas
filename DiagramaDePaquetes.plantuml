@@ -1,4 +1,4 @@
-@startuml cock
+@startuml DiagramaPaquetes
 top to bottom direction
 
 package "Presentacion" {
@@ -62,8 +62,9 @@ package "Modelo"{
 }
 
 package EstructuraDatos{
-    interface ILista
-    class ListaEspañol
+    interface InterLista
+    class ListaEsp
+    class Nodo
 }
 
 Presentacion ....> Servicio : "Delega a"
@@ -95,7 +96,8 @@ Cita o-- Lugar
 Procedimiento -up-o Cita
 Agenda o-- Cita
 
-ListaEspañol --> ILista: Implementa
+ListaEsp ..|> InterLista: Implementa
+ListaEsp "1" -- "1" Nodo
 
 
 @enduml
