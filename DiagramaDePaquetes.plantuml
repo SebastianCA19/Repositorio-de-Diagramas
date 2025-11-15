@@ -2,14 +2,11 @@
 top to bottom direction
 
 package "Presentacion" {
-    class UsuarioControlador
+    class UsuarioControlador 
     class MedicoControlador
     class AdministradorControlador
     class EnfermeraControlador
     class PacienteControlador
-    class AgendaControlador
-    class AgendaMedicoControlador
-    class AgendaEnfermeraControlador
     class LugarControlador
     class CitaControlador
     class HistoriaClinicaControlador
@@ -22,9 +19,6 @@ package "Servicio"{
     class AdministradorServicio
     class EnfermeraServicio
     class PacienteServicio
-    class AgendaServicio
-    class AgendaMedicoServicio
-    class AgendaEnfermeraServicio
     class LugarServicio
     class CitaServicio
     class HistoriaClinicaServicio
@@ -37,9 +31,6 @@ package "Persistencia"{
     class AdministradorRepositorio
     class EnfermeraRepositorio
     class PacienteRepositorio
-    class AgendaRepositorio
-    class AgendaMedicoRepositorio
-    class AgendaEnfermeraRepositorio
     class LugarRepositorio
     class CitaRepositorio
     class HistoriaClinicaRepositorio
@@ -52,9 +43,6 @@ package "Modelo"{
     class Administrador
     class Enfermera
     class Paciente
-    class Agenda
-    class AgendaMedico
-    class AgendaEnfermera
     class Lugar
     class Cita
     class HistoriaClinica
@@ -67,13 +55,13 @@ package EstructuraDatos{
     class Nodo
 }
 
-Presentacion ....> Servicio : "Delega a"
+Presentacion ....> Servicio : "usa"
 Presentacion ....> EstructuraDatos : "usa"
 
 Servicio ....> Persistencia : "usa"
 Servicio ....> EstructuraDatos : "usa"
 
-Persistencia ....> Modelo : "mapea a"
+Persistencia ....> Modelo : "usa"
 Persistencia ....> EstructuraDatos : "usa"
 
 'Relaciones de herencia'
@@ -83,18 +71,16 @@ Usuario <|-down- Administrador
 Usuario <|-down- Enfermera
 Usuario <|-down- Paciente
 
-Agenda <|-down- AgendaMedico
-Agenda <|-down- AgendaEnfermera
 
 'Relaciones de cardinalidad
 
 Paciente *-- HistoriaClinica
 Paciente *-- Cita
-Medico *--- AgendaMedico
-Enfermera *-- AgendaEnfermera
 Cita o-- Lugar
 Procedimiento -up-o Cita
-Agenda o-- Cita
+
+Medico "*" --o "*" Cita : Atiende
+Enfermera "*" --o "*" Cita : Asiste
 
 ListaEsp ..|> InterLista: Implementa
 ListaEsp "1" -- "1" Nodo

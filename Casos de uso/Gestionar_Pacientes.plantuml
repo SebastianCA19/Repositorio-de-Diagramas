@@ -1,0 +1,18 @@
+@startuml GP_Gestionar_Pacientes 
+left to right direction
+
+rectangle Gestionar_Paciente{
+    usecase "Consultar historial de citas" as UC_HistorialCitas 
+    usecase "Visualizar paciente" as UC_ResumenPaciente 
+}
+
+actor "Médico" as Medico
+actor "Paciente" as Paciente 
+
+Paciente -up- UC_ResumenPaciente 
+Paciente -up- UC_HistorialCitas 
+
+Medico -- UC_ResumenPaciente 
+Medico -- UC_HistorialCitas 
+
+@enduml 

@@ -1,0 +1,21 @@
+@startuml GR_Gestionar_Historias_Clinicas 
+left to right direction
+rectangle Gestionar_Historias_Clinicas{
+    usecase "Crear historia clinica" as UC_CrearHistoria 
+    usecase "Editar historia clinica" as UC_EditarHistoria 
+    usecase "Visualizar historia clinica" as UC_VerHistoria    
+    usecase "Buscar historia clinica" as UC_BuscarHistoria
+}
+
+actor "Médico" as Medico 
+actor "Paciente" as Paciente 
+
+Medico -- UC_CrearHistoria
+Medico -- UC_BuscarHistoria
+
+Paciente -- UC_BuscarHistoria
+
+UC_VerHistoria .up.> UC_BuscarHistoria : Extends
+UC_EditarHistoria .up.> UC_BuscarHistoria : Extends
+
+@enduml 

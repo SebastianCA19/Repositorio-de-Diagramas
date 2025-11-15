@@ -1,0 +1,47 @@
+@startuml lel
+
+Actor Cliente
+
+Node main_host{
+
+Node ServUsuarios{
+    Component PresentacionUsuario
+    Component ServicioUsuario
+    Component RepositorioUsuario
+    Component Usuario
+}
+Node ServCitas{
+    Component PresentacionCita
+    Component ServicioCita
+    Component RepositorioCita
+    Component Cita
+}
+Node ServNoti{
+    Component PresentacionNoti
+    Component ServicioNoti
+    Component Notificacion
+}
+Node ServHistorias{
+    Component PresentacionHistoria
+    Component ServicioHistoria
+    Component RepositorioHistoria
+    Component Historia
+}
+database DBUsuarios
+database DBSistema_citas
+}
+
+'Database connections'
+
+DBSistema_citas -- ServCitas
+DBUsuarios -- ServUsuarios
+DBSistema_citas -- ServHistorias
+
+'Communication between services'
+ServUsuarios .. ServHistorias: API
+ServCitas .. ServUsuarios: API
+ServNoti .. ServUsuarios: API
+
+Cliente -- main_host: HTTPS
+
+@enduml

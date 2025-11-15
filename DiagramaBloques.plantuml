@@ -1,0 +1,31 @@
+@startuml lel
+
+left to right direction
+
+Actor Cliente_Web
+
+Rectangle Sistema_Citas{
+Rectangle Microservicio_Usuario
+Rectangle Microservicio_Notificacion
+Rectangle Microservicio_Cita
+Rectangle Microservicio_Historia
+
+Database Usuarios
+Database Sistema_CitasDB
+}
+
+'Conexion directa a cliene'
+
+Microservicio_Usuario --> Cliente_Web
+Microservicio_Cita --> Cliente_Web
+Microservicio_Notificacion --> Cliente_Web
+Microservicio_Historia --> Cliente_Web
+
+'Bases de datos'
+
+Usuarios -- Microservicio_Usuario 
+
+Sistema_CitasDB -- Microservicio_Cita
+Sistema_CitasDB -- Microservicio_Historia
+
+@enduml

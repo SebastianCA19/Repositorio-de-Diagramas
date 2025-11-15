@@ -1,0 +1,38 @@
+@startuml DiagramaClasesCitas
+
+top to bottom direction
+
+class Usuario
+class Medico
+class Administrador
+class Enfermera
+class Paciente
+class Lugar
+class Cita
+class HistoriaClinica
+class Procedimiento
+
+'Relaciones de herencia
+
+Usuario <|-down- Medico
+Usuario <|-down- Administrador
+Usuario <|-down- Enfermera
+Usuario <|-down- Paciente
+
+'Relaciones de cardinalidad
+
+Paciente "1" *-- "*" HistoriaClinica : Tiene
+Paciente "1" --o "*" Cita : Aparta
+
+Cita "1" o-- "1" Lugar : Se desarrolla en
+Procedimiento "1" -up-o "*" Cita : se desarrolla en
+
+Medico "*" --o "*" Cita : Atiende
+Enfermera "*" --o "*" Cita : Asiste
+
+
+'Especialidad seria un atributo del medico
+'Tipo de cita seria un atributo de la cita
+
+
+@enduml

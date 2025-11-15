@@ -1,0 +1,22 @@
+@startuml GU_Gestionar_Usuarios 
+left to right direction 
+
+actor "Administrativo" as Admin 
+actor "Usuario" as Usu 
+
+rectangle Gestionar_Usuarios{
+    usecase "Registrar Usuario" as UC_RegistrarUsuario 
+    usecase "Iniciar sesion de usuario" as UC_Login
+    usecase "Recuperar contraseña" as UC_RecuperarPassword 
+    usecase "Editar información" as UC_EditarInfo 
+    usecase "Eliminar Usuario" as UC_BorrarUsuario
+}
+
+Admin -- UC_RegistrarUsuario 
+Admin -- UC_BorrarUsuario
+
+Usu -- UC_RegistrarUsuario 
+Usu -- UC_Login 
+Usu -- UC_RecuperarPassword
+Usu -- UC_EditarInfo 
+@enduml 

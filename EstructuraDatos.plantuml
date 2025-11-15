@@ -22,11 +22,10 @@ left to right direction
     }
 
     class ListaEsp <E>{
-        -ultimo: Nodo
         -cantidad: int
 
         -obtenerNodo(indice: int): Nodo
     }
 
     ListaEsp ..|> InterLista : implementa
-    ListaEsp "1" -- "1" Nodo
+    ListaEsp "1" *-- "1" Nodo
